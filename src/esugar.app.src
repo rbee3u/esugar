@@ -1,0 +1,14 @@
+{application, esugar, [
+      {description, "An Erlang Syntactic Sugar Library"}
+    , {vsn, "1.0.0"}
+    , {modules, [
+          esugar_bind_transform
+        , esugar_do_transform
+        , esugar_import_as_transform
+        , esugar_pipe_transform
+        , esugar_util
+      ]}
+    , {registered, []}
+    , {applications, [kernel, stdlib]}
+    , {env, []}
+]}.
