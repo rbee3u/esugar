@@ -14,14 +14,13 @@ esugar_pipe_transform_test_() ->
 
 
 basic_operation() ->
-    ?assertEqual(pipe@(0), 0),
-    ?assertEqual(pipe@(3.14), 3.14),
-    ?assertEqual(pipe@(3.14 ! fun erlang:trunc/1), 3),
-    ?assertEqual(pipe@(3 ! math:pow(2)), 8.0),
-    ?assertEqual(pipe@(3.14 ! fun erlang:trunc/1 ! math:pow(2)), 8.0),
-    ?assertEqual(pipe@(3 ! fun(X) -> X + 2 end), 5),
-    Data = "foobar",
-    ?assertEqual("3858f62230ac3c915f300c664312c63f", md5(Data)),
+    ?assertEqual(0, pipe@(0)),
+    ?assertEqual(3.14, pipe@(3.14)),
+    ?assertEqual(3, pipe@(3.14 ! fun erlang:trunc/1)),
+    ?assertEqual(8.0, pipe@(3 ! math:pow(2))),
+    ?assertEqual(8.0, pipe@(3.14 ! fun erlang:trunc/1 ! math:pow(2))),
+    ?assertEqual(5, pipe@(3 ! fun(X) -> X + 2 end)),
+    ?assertEqual("3858f62230ac3c915f300c664312c63f", md5("foobar")),
     ok.
 
 
